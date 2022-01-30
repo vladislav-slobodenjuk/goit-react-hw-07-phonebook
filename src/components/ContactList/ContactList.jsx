@@ -18,7 +18,8 @@ export default function ContactList() {
           <button
             className={s.contactButton}
             type="button"
-            onClick={() => dispatch(actions.deleteContact(name))}
+            onClick={() => dispatch(actions.asyncDeleteContact(id))}
+            // onClick={() => dispatch(actions.deleteContact(name))}
           >
             delete
           </button>

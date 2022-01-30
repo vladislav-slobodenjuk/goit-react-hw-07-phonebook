@@ -21,7 +21,8 @@ export default function ContactForm() {
       number: number,
     };
 
-    dispatch(actions.addContact(newContact));
+    // dispatch(actions.addContact(newContact));
+    dispatch(actions.asyncAddContact(newContact));
   };
 
   return (

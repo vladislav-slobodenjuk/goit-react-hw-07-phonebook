@@ -24,7 +24,8 @@ const persistedReducer = persistReducer(contactsPersistConfig, contactsReducer);
 
 const store = configureStore({
   reducer: {
-    contacts: persistedReducer,
+    // contacts: persistedReducer,
+    contacts: contactsReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware: getDefaultMiddleware =>

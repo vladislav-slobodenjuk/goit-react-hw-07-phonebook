@@ -9,13 +9,19 @@ const initialItems = [
   { id: 'id-5', name: 'Vladislav Sl', number: '555-77-58' },
 ];
 const ItemsReducer = createReducer(initialItems, {
-  [actions.addContact]: (state, { payload }) => {
+  // [actions.addContact]: (state, { payload }) => {
+  [actions.addContactSuccess]: (state, { payload }) => {
     const isAdded = state.find(contact => contact.name === payload.name);
     if (!isAdded) return [...state, payload];
     alert('contact is added');
   },
-  [actions.deleteContact]: (state, { payload }) => {
-    return state.filter(contact => contact.name !== payload);
+  [actions.deleteContactSuccess]: (state, { payload }) => {
+    return state.filter(contact => contact.id !== payload);
+  },
+  // [actions.asyncAddContact]
+
+  [actions.fetchContactsSuccess]: (_state, { payload }) => {
+    return payload;
   },
 });
 
