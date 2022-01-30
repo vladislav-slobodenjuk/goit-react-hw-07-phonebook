@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import actions from 'redux/contacts/contacts-actions';
+// import actions from 'redux/contacts/contacts-actions';
+import { AddContact } from 'redux/contacts/contacts-operations';
 
 import s from './ContactForm.module.scss';
 
@@ -22,7 +23,8 @@ export default function ContactForm() {
     };
 
     // dispatch(actions.addContact(newContact));
-    dispatch(actions.asyncAddContact(newContact));
+    // dispatch(actions.asyncAddContact(newContact));
+    dispatch(AddContact(newContact));
   };
 
   return (

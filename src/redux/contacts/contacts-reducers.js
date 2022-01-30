@@ -1,5 +1,10 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import actions from './contacts-actions';
+import {
+  fetchContacts,
+  AddContact,
+  deleteContact,
+} from 'redux/contacts/contacts-operations';
 
 const initialItems = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -9,19 +14,17 @@ const initialItems = [
   { id: 'id-5', name: 'Vladislav Sl', number: '555-77-58' },
 ];
 const ItemsReducer = createReducer(initialItems, {
+  [fetchContacts.fulfilled]: (_state, { payload }) => {
+    return payload;
+  },
   // [actions.addContact]: (state, { payload }) => {
-  [actions.addContactSuccess]: (state, { payload }) => {
+  [AddContact.fulfilled]: (state, { payload }) => {
     const isAdded = state.find(contact => contact.name === payload.name);
     if (!isAdded) return [...state, payload];
     alert('contact is added');
   },
-  [actions.deleteContactSuccess]: (state, { payload }) => {
+  [deleteContact.fulfilled]: (state, { payload }) => {
     return state.filter(contact => contact.id !== payload);
-  },
-  // [actions.asyncAddContact]
-
-  [actions.fetchContactsSuccess]: (_state, { payload }) => {
-    return payload;
   },
 });
 
