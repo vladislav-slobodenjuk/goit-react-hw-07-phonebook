@@ -6,7 +6,7 @@ import {
   deleteContact,
 } from 'redux/contacts/contacts-operations';
 
-const ItemsReducer = createReducer([], {
+const itemsReducer = createReducer([], {
   [fetchContacts.fulfilled]: (_state, { payload }) => {
     return payload;
   },
@@ -25,7 +25,7 @@ const filterReducer = createReducer('', {
 });
 
 export const contactsReducer = combineReducers({
-  items: ItemsReducer,
+  items: itemsReducer,
   filter: filterReducer,
 });
 
